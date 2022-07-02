@@ -73,7 +73,7 @@ pipeline {
         stage('Deploy webAPP in Prod Env') {
             steps {
                 sshagent(['AQT-ENV-SSH-CRED']) {
-                // some block
+                // some block of code
                 sh "ssh -o StrictHostKeyChecking=no ec2-user@65.2.35.195 sudo docker rm -f myjavaapp"
                 sh "ssh ec2-user@65.2.35.195 sudo docker run -d -p 8080:8080 --name myjavaapp manojtripathi/javaweb:${BUILD_TAG}"
                             }
